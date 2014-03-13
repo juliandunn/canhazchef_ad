@@ -17,15 +17,9 @@
 # limitations under the License.
 #
 
-# Stuff that you need to have preinstalled before the LWRPs will
-# work. In this order.
-%w{ServerManager-Core-RSAT ServerManager-Core-RSAT-Role-Tools RSAT-AD-Tools-Feature ActiveDirectory-PowerShell}.each do |f|
-  windows_feature f do
-    action :install
-  end
-end
+include 'windows_ad::default'
 
-active_directory_domain node['canhazchef_ad']['domain'] do
+windows_ad_domain node['canhazchef_ad']['domain'] do
   action :create
   type "forest"
   safe_mode_pass 'Passw0rd'
