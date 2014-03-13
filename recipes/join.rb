@@ -18,7 +18,7 @@
 #
 
 # Join domain
-active_directory_domain node['canhazchef_ad']['domain'] do
+windows_ad_domain node['canhazchef_ad']['domain'] do
   action :join
   domain_pass "Passw0rd"
   domain_user "Administrator"
