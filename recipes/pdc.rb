@@ -17,10 +17,12 @@
 # limitations under the License.
 #
 
-include 'windows_ad::default'
+include_recipe 'windows_ad::default'
 
 windows_ad_domain node['canhazchef_ad']['domain'] do
   action :create
   type "forest"
   safe_mode_pass 'Passw0rd'
+  domain_user 'chefad'
+  domain_pass 'Passw0rd'
 end
