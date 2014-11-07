@@ -26,3 +26,9 @@ windows_ad_domain node['canhazchef_ad']['domain'] do
   domain_user 'chefad'
   domain_pass 'Passw0rd'
 end
+
+# Use IAM roles so we don't need to monkey with access keys
+aws_elastic_ip 'pdc' do
+  action :associate
+  ip node['canhazchef_ad']['pdcip']
+end
